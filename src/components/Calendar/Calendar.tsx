@@ -208,7 +208,7 @@ const Calendar = ({
   }
 
   const CalendarDayButton = ({
-    day: _day,
+    day,
     modifiers,
     className: buttonClassName,
     children,

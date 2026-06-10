@@ -36,6 +36,10 @@ export default tseslint.config(
       // (press-and-hold buttons, sync-state-on-open effects) predate them
       "react-hooks/set-state-in-effect": "off",
       "react-hooks/immutability": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { ignoreRestSiblings: true },
+      ],
     },
   },
   ...storybook.configs["flat/recommended"],

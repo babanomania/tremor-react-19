@@ -12,6 +12,11 @@ import { defineConfig, devices } from "@playwright/test"
  */
 export default defineConfig({
   testDir: "./src/components",
+  /* Allow for vite dev-server warmup: first loads after a cold storybook
+     start can take 15-30s while dependencies are optimized */
+  expect: {
+    timeout: 15_000,
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -74,5 +79,7 @@ export default defineConfig({
     command: "npm run storybook",
     url: "http://localhost:6006",
     reuseExistingServer: !process.env.CI,
+    /* cold storybook + vite optimizer can exceed the default 60s */
+    timeout: 180_000,
   },
 })

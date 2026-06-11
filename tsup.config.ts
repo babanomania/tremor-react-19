@@ -9,5 +9,5 @@ export default defineConfig({
   target: "es2020",
   // the whole library is client components
   banner: { js: '"use client";' },
-  onSuccess: 'node -e "require(\'fs\').copyFileSync(\'src/theme.css\',\'dist/theme.css\')"',
+  onSuccess: "node scripts/build-theme.mjs",
 })

@@ -1,55 +1,85 @@
-<br />
-<br />
-<p align="center">
-  <a href="https://tremor.so/raw"> 
-    <picture>
-       <source media="(prefers-color-scheme: dark)" srcset="public/images/tremor-logo-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="public/images/tremor-logo-light.svg">
-    <img alt="Tremor Logo" src="public/images/tremor-logo-light.svg" height="50"/>
-    </picture>
-  </a>
-</p>
-<br />
-<div align="center">
-  <a href="https://tremor.so/docs/getting-started/installation">
-    <img alt="Read the documentation" src="https://img.shields.io/badge/Docs-blue?style=flat&logo=readthedocs&color=3b82f6&labelColor=334155&logoColor=f5f5f5" height="20" width="auto">
-  </a>
-  <a href="https://github.com/tremorlabs/tremor/blob/main/License">
-    <img alt="License Apache 2.0" src="https://img.shields.io/badge/license-Apache 2.0-blue.svg?style=flat&color=3b82f6&labelColor=334155 " height="20" width="auto">
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=tremorlabs">
-    <img src="https://img.shields.io/badge/Follow-important.svg?color=000000&label=@tremorlabs&logo=X&labelColor=334155&logoColor=f5f5f5" alt="Follow at Tremorlabs" />
-  </a>
-</div>
-<br />
-<br />
- 
- <h1 align="center">Copy & Paste React components to build <br/>  charts and dashboards</h1>
+# tremor-react-19
 
-[Tremor](https://tremor.so/) offers 35+ customizable, accessible React components to build dashboards and modern web applications. Built on top of Tailwind CSS and Radix UI.
+A community fork of [Tremor](https://github.com/tremorlabs/tremor) — the copy & paste
+React components for charts and dashboards — with its dependency stack modernized to
+**React 19**, **Tailwind CSS v4**, and **Recharts 3**.
 
-<br />
+> [!NOTE]
+> **This is a temporary, stopgap project.** Upstream Tremor is excellent but currently
+> targets React 18-era dependencies. This fork exists only to bridge the gap until the
+> original maintainers ship official support for the newer stack — at which point you
+> should switch (back) to [tremorlabs/tremor](https://github.com/tremorlabs/tremor).
+> No new components or features are added here; the goal is fidelity to upstream on a
+> modern dependency tree.
 
-![Tremor Banner](public/images/github-banner.png)
+The modernization was carried out with **Claude Fable 5** (Anthropic), and verified
+end-to-end: typecheck, lint, unit tests, and a 588-test Playwright suite across
+Chromium, Firefox, and WebKit.
 
-<br />
+## Live demo
 
-## Getting Started
+Browse every component in the **[Storybook](https://babanomania.github.io/tremor-react-19/)**.
 
-See our [Installation Guide](https://tremor.so/docs/getting-started/installation) to get started.
+## What's inside
 
-## Socials
+| Dependency | Version |
+| --- | --- |
+| React / React DOM | 19.2 |
+| Tailwind CSS | 4.3 |
+| Recharts | 3.8 |
+| react-day-picker | 10 |
+| date-fns | 4 |
+| TypeScript | 6.0 |
 
-- [Tremor Website](https://tremor.so)
-- [Tremor on X (formerly Twitter)](https://twitter.com/tremorlabs)
-- [Tremor on Slack](https://tremor.so/slack)
+35+ accessible components: charts (Area, Bar, Line, Combo, Donut, Spark), inputs,
+date pickers, dialogs, drawers, tables, and more — built on Radix UI and Tailwind CSS.
 
-## Community and Contribution
+## Installation
 
-We are always looking for new ideas or other ways to improve Tremor Raw. If you have developed anything cool or found a bug, send us a pull request. Check out our Contributor License Agreement [here](https://www.tremor.so/contributors).
+Install straight from a GitHub tag (the package builds itself on install):
+
+```bash
+npm install github:babanomania/tremor-react-19#v1.1.1
+```
+
+Add two lines to your app's CSS — that's the whole Tailwind setup:
+
+```css
+@import "tailwindcss";
+@import "tremor-react-19/theme.css";
+```
+
+Use the components:
+
+```tsx
+import { AreaChart, Button, DatePicker } from "tremor-react-19"
+```
+
+**Requirements:** React 19 (peer dependency) and Tailwind CSS v4.
+
+### Prefer to own the code?
+
+This is still a copy & paste library at heart, exactly like upstream:
+
+1. Copy the component file(s) you need from [`src/components/`](src/components/)
+2. Copy the small utilities they import from [`src/utils/`](src/utils/) (`cx`, `focusRing`, …)
+3. Add the animation tokens from [`src/theme.css`](src/theme.css) to your CSS
+4. Install the dependencies listed at the top of each component file
+
+Or click **Use this template** to start a new project from the whole repo.
+
+## Development
+
+```bash
+npm install
+npm run storybook   # component workbench at localhost:6006
+npm run test:all    # vitest + playwright suite
+```
 
 ## License
 
-[Apache License 2.0](https://github.com/tremorlabs/tremor?tab=Apache-2.0-1-ov-file#readme)
-
-Copyright &copy; 2025 Tremor. All rights reserved.
+[Apache License 2.0](LICENSE) — this project is a derivative of
+[Tremor](https://github.com/tremorlabs/tremor), © Tremor. Original license and
+attribution retained; modifications are documented in the
+[release notes](https://github.com/babanomania/tremor-react-19/releases) and commit history.
+All credit for the component design and implementation belongs to the Tremor team.
